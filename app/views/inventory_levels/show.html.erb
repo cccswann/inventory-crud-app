@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Qty Available:</strong>
+  <%= @inventory_level.available %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @inventory_level.item.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @inventory_level.warehouse.name %>
+</p>
+
+<%= link_to 'Edit', edit_inventory_level_path(@inventory_level) %> |
+<%= link_to 'Back', inventory_levels_path %>

@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inventory</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Cost/Unit</th>
+      <th>Available</th>
+      <th>Warehouse</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inventory_levels.each do |inventory_level| %>
+      <tr>
+        <td><%= inventory_level.item.name %></td>
+        <td><%= number_to_currency(inventory_level.item.cost, :unit => "$")%></td>
+        <td><%= inventory_level.available %></td>
+        <td><%= inventory_level.warehouse.name %>></td>
+        <td><%= link_to 'Show', inventory_level %></td>
+        <td><%= link_to 'Edit', edit_inventory_level_path(inventory_level) %></td>
+        <td><%= link_to 'Destroy', inventory_level, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'New Item', new_item_path %>
+<br>
+<%= link_to 'New Warehouse', new_warehouse_path %>

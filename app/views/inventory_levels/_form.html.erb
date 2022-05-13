@@ -1,0 +1,46 @@
+<%= form_with(model: inventory_level) do |form| %>
+  <% if inventory_level.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(inventory_level.errors.count, "error") %> prohibited this inventory_level from being saved:</h2>
+
+      <ul>
+        <% inventory_level.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <strong>Item:</strong>
+    <%= @inventory_level.item.name %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @inventory_level.warehouse.name %>
+  </p>
+  
+  <p>
+    <strong>Location ID:</strong>
+    <%= @inventory_level.warehouse_id %>
+  </p>
+
+<h3> Change Qty Available or Location </h3>
+  <div class="field">
+    <%= form.label :available %>
+    <%= form.number_field :available %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Location ID' %>
+    <%= form.number_field :warehouse_id %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
